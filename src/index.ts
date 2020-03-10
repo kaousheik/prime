@@ -9,7 +9,7 @@ import connectRedis from "connect-redis";
 import cors from "cors";
 import { redis } from "./redis";
 // import { PrimeFeedbackResolver } from "./services/User/resolvers/PrimeFeedbackResolver";
-// import { DepartmentResolver } from "./services/Department/resolvers/DepartmentResolver";
+import { DepartmentResolver } from "./services/Department/resolvers/DepartmentResolver";
 const main = async () => {
 
   await createConnection();
@@ -17,7 +17,7 @@ const main = async () => {
   const schema = await buildSchema({
     resolvers: [UserResolver, 
         // PrimeFeedbackResolver, 
-        // DepartmentResolver
+        DepartmentResolver
     ],
     validate: false
   });
