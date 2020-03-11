@@ -16,7 +16,9 @@
     "redis": "^3.0.2",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^0.17.6",
-    "typeorm": "^0.2.24"
+    "typedi": "^0.8.0",
+    "typeorm": "^0.2.24",
+    "typeorm-typedi-extensions": "^0.2.3"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",

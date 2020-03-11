@@ -5,7 +5,7 @@
     "port": 5432,
     "username": "kaousheik",
     "password": "jayakumar16",
-    "database": "prime",
+    "database": "prime-2",
     "synchronize": true,
     "logging": true,
     "entities": ["src/services/**/entities/*.*"]

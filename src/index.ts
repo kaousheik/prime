@@ -2,24 +2,28 @@ import "reflect-metadata";
 import { ApolloServer } from "apollo-server-express";
 import  Express from "express";
 import { buildSchema } from "type-graphql";
-import { UserResolver } from "./services/User/resolvers/UserResolver";
+// import { UserResolver } from "./services/User/resolvers/UserResolver";
 import { createConnection } from "typeorm";
 import session from "express-session";
 import connectRedis from "connect-redis";
 import cors from "cors";
 import { redis } from "./redis";
+import { Container } from "typedi";
+import { useContainer } from "typeorm"
 // import { PrimeFeedbackResolver } from "./services/User/resolvers/PrimeFeedbackResolver";
 import { DepartmentResolver } from "./services/Department/resolvers/DepartmentResolver";
+useContainer(Container);
 const main = async () => {
 
   await createConnection();
 
   const schema = await buildSchema({
-    resolvers: [UserResolver, 
+    resolvers: [
         // PrimeFeedbackResolver, 
         DepartmentResolver
     ],
-    validate: false
+    validate: false,
+    container: Container
   });
 
   const apolloServer = new ApolloServer({ 
@@ -61,5 +65,4 @@ const main = async () => {
     console.log("server started on http://localhost:4000/graphql");
   });
 };
-
 main();
