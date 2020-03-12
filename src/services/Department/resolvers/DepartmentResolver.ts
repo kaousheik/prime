@@ -44,6 +44,6 @@ export class DepartmentResolver {
 
     @Query(() => [SubDepartment], {nullable: true})
     async getSub() {
-        return await SubDepartment.find({relations: ["department"]})
+        return await SubDepartment.find({relations: ["department", "members"]})
     }
 }

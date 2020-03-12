@@ -2,6 +2,7 @@ import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne } from "t
 import { ObjectType, Field, ID } from "type-graphql";
 import { AccessLevel } from "../enums/AccessLevel";
 import { Department } from "../../Department/entities/Department";
+import { SubDepartment } from "../../Department/entities/SubDepartment";
 
 @Entity()
 @ObjectType()
@@ -22,7 +23,11 @@ export class User extends BaseEntity{
     @Field()
     password: string
 
-    @Column()
+    @Column({
+        type: "enum",
+        enum: AccessLevel,
+        default: AccessLevel.COORD
+    })
     @Field(() => AccessLevel)
     accessLevel: AccessLevel
 
@@ -42,4 +47,7 @@ export class User extends BaseEntity{
     @ManyToOne(() => Department, department => department.members, {nullable: true})
     department: Department
 
+    @Field(() => SubDepartment, {nullable: true})
+    @ManyToOne(() => SubDepartment, subDepartment => subDepartment.members, {nullable: true})
+    subDepartment: SubDepartment
 }

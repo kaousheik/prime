@@ -1,11 +1,11 @@
 import { registerEnumType } from "type-graphql";
 
 export enum AccessLevel {
-    CORE,
-    COORD,
-    COCAS,
-    COCAD,
-    HEAD
+    CORE = "CORE",
+    COORD = "COORD",
+    COCAS = "COCAS",
+    COCAD = "COCAD",
+    HEAD = "HEAD" 
 }
 registerEnumType(AccessLevel, {
     name: "AccessLevel"

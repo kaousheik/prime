@@ -1,6 +1,6 @@
+import { Request, Response } from "express";
 
-import { Request } from "express";
-
-export interface AuthContext {
+export interface AuthContext{
   req: Request;
+  res: Response;
 }

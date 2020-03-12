@@ -12,6 +12,7 @@ import { Container } from "typedi";
 import { useContainer } from "typeorm"
 // import { PrimeFeedbackResolver } from "./services/User/resolvers/PrimeFeedbackResolver";
 import { DepartmentResolver } from "./services/Department/resolvers/DepartmentResolver";
+import { PrimeFeedbackResolver } from "./services/User/resolvers/FeedbackResolver";
 useContainer(Container);
 const main = async () => {
 
@@ -20,15 +21,16 @@ const main = async () => {
   const schema = await buildSchema({
     resolvers: [
         UserResolver, 
-        DepartmentResolver
+        DepartmentResolver,
+        PrimeFeedbackResolver
     ],
     validate: false,
-    container: Container
+    container: Container,
   });
 
   const apolloServer = new ApolloServer({ 
     schema,
-    context: ({ req }: any) => ({ req })
+    context: ({ req, res }: any) => ({ req, res })
    });
 
   const app = Express();
