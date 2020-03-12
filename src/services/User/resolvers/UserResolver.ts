@@ -13,7 +13,11 @@ export class UserResolver {
     ){}
     @Query(() => [User])
     async getAllUsers() {
-        return await this.userRepository.find({relations: ["department", "members", "subDepartments"]})
+        return await this.userRepository.find({relations: [
+                                        "department", 
+                                        "department.members", 
+                                        "department.subDepartments"
+                                    ]})
     }
 
     @Mutation(() => User)
