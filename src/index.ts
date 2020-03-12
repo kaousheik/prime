@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { ApolloServer } from "apollo-server-express";
 import  Express from "express";
 import { buildSchema } from "type-graphql";
-// import { UserResolver } from "./services/User/resolvers/UserResolver";
+import { UserResolver } from "./services/User/resolvers/UserResolver";
 import { createConnection } from "typeorm";
 import session from "express-session";
 import connectRedis from "connect-redis";
@@ -19,7 +19,7 @@ const main = async () => {
 
   const schema = await buildSchema({
     resolvers: [
-        // PrimeFeedbackResolver, 
+        UserResolver, 
         DepartmentResolver
     ],
     validate: false,

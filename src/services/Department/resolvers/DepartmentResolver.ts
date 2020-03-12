@@ -12,7 +12,7 @@ export class DepartmentResolver {
         ) {}
     @Query(() => [Department])
     async getDepartments(): Promise<Department[] | null> {
-        return await this.deptRepository.find({relations: ["subDepartments"]})
+        return await this.deptRepository.find({relations: ["subDepartments", "members"]})
     }
     @Mutation(() => Department)
     async createDept(@Arg("name") name: string): Promise<Department>{
@@ -24,7 +24,7 @@ export class DepartmentResolver {
     }
 
     @Mutation(() => SubDepartment)
-    async createSub(@Arg("name") name: string, @Arg("dept") dept: string):Promise<Department | null> {
+    async createSub(@Arg("name") name: string, @Arg("dept") dept: string):Promise<SubDepartment | null> {
         const department = await this.deptRepository.findOne({
             where: {name: dept}, 
             relations: ["subDepartments"]
@@ -37,7 +37,7 @@ export class DepartmentResolver {
             console.log(department)
             await this.deptRepository.save(department)
             await this.subDeptRepository.save(subdept)
-            return department
+            return subdept
         } else return null
     }
 
