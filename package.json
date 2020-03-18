@@ -12,6 +12,7 @@
     "express-session": "^1.17.0",
     "graphql": "^14.6.0",
     "ioredis": "^4.16.0",
+    "moment": "^2.24.0",
     "pg": "^7.18.2",
     "redis": "^3.0.2",
     "reflect-metadata": "^0.1.13",

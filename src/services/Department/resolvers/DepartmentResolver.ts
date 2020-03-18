@@ -12,7 +12,18 @@ export class DepartmentResolver {
         ) {}
     @Query(() => [Department])
     async getDepartments(): Promise<Department[] | null> {
-        return await this.deptRepository.find({relations: ["subDepartments", "members", "members.department", "members.department.subDepartments"]})
+        return await this.deptRepository.find({relations: [
+            "subDepartments", 
+            "members", 
+            "members.department", 
+            "members.department.subDepartments", 
+            "tasksAssigned", 
+            "tasksAssigned.assignedTo",
+            "tasksAssigned.createdBy",
+            "taskCreated",
+            "taskCreated.assignedTo",
+            "taskCreated.createdBy"
+        ]})
     }
     @Mutation(() => Department)
     async createDept(@Arg("name") name: string): Promise<Department>{

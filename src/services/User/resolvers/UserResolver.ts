@@ -25,7 +25,9 @@ export class UserResolver {
                     "subDepartment",    
                     "department", 
                     "department.members", 
-                    "department.subDepartments"
+                    "department.subDepartments",
+                    "tasksCreated",
+                    // "tasksAssigned"
                 ]})
     }
 
@@ -36,7 +38,14 @@ export class UserResolver {
           }
       
           return await this.userRepository.findOne(ctx.req.session!.userId, {
-            relations: ["department", "department.subDepartments", "department.members"]
+            relations: [
+                "department", 
+                "department.subDepartments", 
+                "department.members", 
+                "tasksCreated", 
+                "tasksCreated.assignedTo"
+                // "tasksAssigned"
+            ]
           });
     }
 

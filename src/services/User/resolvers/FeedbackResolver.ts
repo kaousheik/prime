@@ -16,8 +16,7 @@ export class PrimeFeedbackResolver {
         const authUser = await this.userRepository.findOne(ctx.req.session!.userId, {relations: ["department"]})
         console.log(authUser?.department.name)
         if(authUser?.department?.name === "WEBOPS"){
-            // console.log(authUser.department.name)
-            return await this.fbkRepository.find({relations: ["by"]})
+            return await this.fbkRepository.find({relations: ["by", "by.department"]})
         } else return null     
     }
 
