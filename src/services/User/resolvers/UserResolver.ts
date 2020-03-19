@@ -26,7 +26,7 @@ export class UserResolver {
                     "department", 
                     "department.members", 
                     "department.subDepartments",
-                    "tasksCreated",
+                    // "tasksCreated",
                     // "tasksAssigned"
                 ]})
     }
@@ -42,8 +42,9 @@ export class UserResolver {
                 "department", 
                 "department.subDepartments", 
                 "department.members", 
-                "tasksCreated", 
-                "tasksCreated.assignedTo"
+                "subDepartment"
+                // "tasksCreated", 
+                // "tasksCreated.assignedTo"
                 // "tasksAssigned"
             ]
           });

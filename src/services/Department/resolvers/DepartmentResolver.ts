@@ -17,12 +17,12 @@ export class DepartmentResolver {
             "members", 
             "members.department", 
             "members.department.subDepartments", 
-            "tasksAssigned", 
-            "tasksAssigned.assignedTo",
-            "tasksAssigned.createdBy",
-            "taskCreated",
-            "taskCreated.assignedTo",
-            "taskCreated.createdBy"
+            // "tasksAssigned", 
+            // "tasksAssigned.assignedTo",
+            // "tasksAssigned.createdBy",
+            // "taskCreated",
+            // "taskCreated.assignedTo",
+            // "taskCreated.createdBy"
         ]})
     }
     @Mutation(() => Department)
