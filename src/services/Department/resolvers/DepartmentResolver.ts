@@ -20,7 +20,8 @@ export class DepartmentResolver {
             // "tasksAssigned", 
             // "tasksAssigned.assignedTo",
             // "tasksAssigned.createdBy",
-            // "taskCreated",
+            "tasksCreated",
+            "tasksAssigned"
             // "taskCreated.assignedTo",
             // "taskCreated.createdBy"
         ]})

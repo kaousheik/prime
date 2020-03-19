@@ -2,6 +2,7 @@ import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToMany } from "t
 import { ObjectType, ID, Field } from "type-graphql";
 import { SubDepartment } from "./SubDepartment";
 import { User } from "../../User/entities/User";
+import { Task } from "../../Task/entities/Task";
 // import { Task } from "../../Task/entities/Task";
 // import { SubDepartment } from "./SubDepartment";
 // import { DepartmentType } from "../enums/DepartmentType.enum";
@@ -25,11 +26,11 @@ export class Department extends BaseEntity{
     @OneToMany(() => User, user => user.department, {nullable: true, cascade: ["insert"]})
     members: User[]
 
-    // @Field(() => [Task], {nullable: true})
-    // @OneToMany(() => Task, task => task.forDept, {nullable: true, cascade: ["insert"]})
-    // tasksAssigned: Task[]
+    @Field(() => [Task], {nullable: true})
+    @OneToMany(() => Task, task => task.forDept, {nullable: true, cascade: ["insert"]})
+    tasksAssigned: Task[]
 
-    // @Field(() => [Task], {nullable: true})
-    // @OneToMany(() => Task, task => task.byDept, {nullable: true, cascade: ["insert"]})
-    // taskCreated: Task[]
+    @Field(() => [Task], {nullable: true})
+    @OneToMany(() => Task, task => task.byDept, {nullable: true, cascade: ["insert"]})
+    tasksCreated: Task[]
 }
